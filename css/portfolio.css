@@ -3,6 +3,10 @@
     margin: 0;
 }
 
+.content {
+    width: 75%;
+}
+
 .portfolio-container {
     margin-top: 1em;
     display: flex;
