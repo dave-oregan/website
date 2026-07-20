@@ -139,7 +139,7 @@ red-tag {
 }
 
 .footer {
-    padding-top: .5em;
+    padding-top: 1.25em;
 }
 
 @media only screen and (max-width: 480px), only screen and (max-device-width: 480px) {

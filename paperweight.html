@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Paperweight — Support</title>
+    <meta name="description" content="Paperweight is a calm, private iOS budget app. Support, privacy, and product information.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/paperweight.css">
+    <link rel="shortcut icon" type="image/png" href="./images/paperweight-logo.png">
+    <link rel="apple-touch-icon" href="./images/paperweight-logo.png">
+</head>
+<body>
+    <div class="atmosphere" aria-hidden="true"></div>
+
+    <main>
+        <header class="hero">
+            <img
+                class="logo"
+                src="./images/paperweight-logo.png"
+                alt="Paperweight app icon"
+                width="220"
+                height="220"
+            >
+            <h1>Paperweight</h1>
+            <p class="lede">
+                A calm, private budget app for tracking income, spending, and savings—month by month.
+            </p>
+            <p class="cta-row">
+                <a class="scroll-cue" href="#what-it-does" aria-label="Scroll to details">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-compact-down" viewBox="0 0 16 16" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67"/>
+                    </svg>
+                </a>
+            </p>
+        </header>
+
+        <section id="what-it-does" class="block reveal">
+            <h2>What it does</h2>
+            <ul>
+                <li>Monthly budgeting with categories and remaining balance</li>
+                <li>Spending targets—one category or many—plus recurring targets</li>
+                <li>Recurring income and expense entries</li>
+                <li>Insights: trends, lifetime breakdown, and target adherence</li>
+                <li>Themes with light and dark modes</li>
+                <li>Face ID / passcode lock</li>
+                <li>CSV/JSON backups and manual iCloud Save / Get transfer</li>
+            </ul>
+        </section>
+
+        <section class="block reveal">
+            <h2>Privacy</h2>
+            <p>
+                Your budget data stays on your device. No account required.
+                Optional Cloud Transfer writes one overwriteable snapshot to your
+                iCloud Drive app container when you tap Save to iCloud.
+            </p>
+        </section>
+
+        <section class="block reveal">
+            <h2>Support</h2>
+            <p>
+                Questions, feedback, or issues?
+                <a href="./contact">Send me a message</a>
+                and mention Paperweight in the subject.
+            </p>
+        </section>
+
+        <footer class="site-footer reveal">
+            <p>
+                App icon:
+                <a href="https://www.flaticon.com/free-icons/coin" title="coin icons" target="_blank" rel="noopener noreferrer">
+                    Coin icons created by Plastic Donut — Flaticon
+                </a>
+            </p>
+            <p class="copy">© 2026 David O’Regan</p>
+        </footer>
+    </main>
+
+    <script>
+        const reveals = document.querySelectorAll('.reveal')
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible')
+                        observer.unobserve(entry.target)
+                    }
+                })
+            }, { threshold: 0.18 })
+            reveals.forEach((el) => observer.observe(el))
+        } else {
+            reveals.forEach((el) => el.classList.add('is-visible'))
+        }
+    </script>
+</body>
+</html>
