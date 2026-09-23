@@ -19,11 +19,14 @@
 .card {
     width: 20rem;
     height: 22rem;
+    perspective: 1000px;
 }
 
 .card-content {
     text-align: center;
     position: relative;
+    width: 100%;
+    height: 100%;
     transition: transform 1000ms;
     transform-style: preserve-3d;
 }
@@ -32,7 +35,8 @@
     transform: rotateY(.5turn);
 }
 
-.rotate .card-content {
+.rotate .card-content,
+.card-content.rotate {
     transform: rotateY(.5turn) !important;
 }
 
@@ -40,6 +44,7 @@
     background-color: var(--darkspace);
     min-width: fit-content;
     backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
     border-radius: 2rem;
     position: absolute;
     height: 22rem;
@@ -51,6 +56,10 @@
     bottom: 0;
     left: 0;
     right: 0;
+}
+
+.card-front-meta {
+    display: none;
 }
 
 .card-back {
@@ -86,16 +95,123 @@
         width: 95%;
     }
 
-    .card {
-        scale: 1.1;
-    }
-
     .portfolio-container {
-        gap: 4rem;
-        row-gap: 4rem;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: stretch;
+        gap: 3.5rem;
+        row-gap: 3.5rem;
+        margin-top: 2em;
+        margin-bottom: 2em;
     }
 
-    .card:hover .card-content, .card:focus .card-content, .card:active .card-content {
+    .card {
+        width: 100%;
+        height: 36rem;
+        scale: 1;
+        perspective: 2000px;
+    }
+
+    .card-content {
+        height: 100%;
+    }
+
+    .card-front,
+    .card-back {
+        height: 100%;
+        min-width: 0;
+        width: 100%;
+        padding: 2rem 2.25rem;
+        border-radius: 2rem;
+    }
+
+    .card-front {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 2.25rem;
+        text-align: left;
+    }
+
+    .card-img {
+        width: 24rem;
+        height: 24rem;
+        flex-shrink: 0;
+        border-radius: 1.5rem;
+        object-fit: cover;
+    }
+
+    .card-front-meta {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 1.1rem;
+        min-width: 0;
+        flex: 1;
+        text-align: left;
+    }
+
+    .card-front-meta h3 {
+        font-size: 3.4em;
+        line-height: 1.2;
+        color: #fff;
+        font-weight: 600;
+    }
+
+    .card-front-meta .link-card {
+        font-size: 2.2em;
+        padding: 0.55em 0.75em;
+        max-width: 100%;
+        line-height: 1.3;
+        white-space: normal;
+        word-break: break-word;
+    }
+
+    .card-front-meta p {
+        font-size: 2.1em;
+        color: color-mix(in srgb, var(--writegrey) 85%, transparent);
+        line-height: 1.35;
+    }
+
+    .card-back {
+        transform: rotateX(.5turn);
+        gap: 1.4rem;
+        padding: 2.25rem 2.5rem;
+        justify-content: flex-start;
+        align-items: flex-start;
+        text-align: left;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .card-back-title,
+    .card-back-link,
+    .card-date-back {
+        display: none;
+    }
+
+    .card-desc {
+        font-size: 2.4em;
+        line-height: 1.4;
+    }
+
+    .card-tech {
+        font-size: 2.1em;
+        color: var(--gold);
+        line-height: 1.35;
+    }
+
+    /* Disable Y-axis hover flip; use X-axis tap flip */
+    .card:hover .card-content,
+    .card:focus .card-content,
+    .card:active .card-content {
         transform: none;
+    }
+
+    .rotate .card-content,
+    .card-content.rotate {
+        transform: rotateX(.5turn) !important;
     }
 }

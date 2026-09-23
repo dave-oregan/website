@@ -11,10 +11,23 @@ function openMobileMenu() {
 }
 
 function rotateToggle(element) {
-    if (element.classList.contains('rotate')) {
-        element.classList.remove('rotate')
-    }
-    else {
-        element.classList.add('rotate')
-    }
+    const card = element.classList.contains('card')
+        ? element
+        : element.closest('.card')
+
+    if (!card || card._rotateLock) return
+
+    card._rotateLock = true
+    card.classList.toggle('rotate')
+
+    // Nested onclick handlers bubble; ignore extras from the same tap
+    setTimeout(() => {
+        card._rotateLock = false
+    }, 0)
 }
+
+document.addEventListener('click', (event) => {
+    if (event.target.closest('.card a')) {
+        event.stopPropagation()
+    }
+}, true)
